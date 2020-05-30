@@ -1,7 +1,11 @@
 FROM node:12.16.3
 
+LABEL traefik.http.routers.dynamic.rule=Host(`api.res.ch`)
+LABEL traefik.http.services.dynamic.loadbalancer.server.port=3000
+
 COPY src/ /opt/app
 
 RUN apt-get update && apt-get install -y nano
 
 CMD ["node", "/opt/app/index.js"]
+

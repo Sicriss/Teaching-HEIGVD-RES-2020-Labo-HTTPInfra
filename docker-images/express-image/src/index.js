@@ -4,6 +4,14 @@ var chance = new Chance();
 var Express = require("express");
 var app = Express();
 
+app.use(function(req, res, next) 
+{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
 app.get('/', function(req, res)
 {
     res.send("Hello RES\n");
@@ -16,7 +24,8 @@ app.get('/animals', function(req, res)
 });
 
 
-app.listen(3000, function() {
+app.listen(3000, function() 
+{
     console.log("Accepting HTTP requests on port 3000.");
 });
 

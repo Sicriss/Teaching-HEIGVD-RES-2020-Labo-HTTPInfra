@@ -1,0 +1,11 @@
+# Docker configuration backend
+
+providers:
+  docker:
+    defaultRule: "Host(`res.ch`)"
+
+# API and dashboard configuration
+
+api:
+  insecure: true
+
