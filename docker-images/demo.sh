@@ -3,16 +3,13 @@
 docker stop `docker ps -qa`
 docker rm `docker ps -qa`
 
-traefik=$("pwd")/traefik.sh
-portainer=$("pwd")/portainer.sh
-
 # On s'assure d'avoir les dernières versions des images
 docker build -t res/apache_php apache-php-image
 docker build -t res/express_students express-image
 
 # On lance tout d'abord les deux containers admin / config 
-$traefik
-$portainer
+$("pwd")/traefik.sh
+$("pwd")/portainer.sh
 
 # Om lance ensuite deux containers de chaque type 
 docker run -d --name nodeApp res/express_students 
